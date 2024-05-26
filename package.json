@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/LeoneRSantos/API-typescript.git",
-  "author": "Matheus Andrade Uchoa <uchoamatheus22@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev --exit-child --transpile-only --ignore-watch node_modules src/server.ts"
+    "dev": "ts-node-dev --respawn --exit-child --transpile-only --ignore-watch node_modules src/server.ts"
   },
   "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.6",
     "bcrypt": "^5.1.1",
     "prisma": "^5.13.0",
     "ts-node-dev": "^2.0.0",
@@ -20,6 +20,8 @@
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "cors": "^2.8.5",
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "yarn": "^1.22.22"
   }
 }
