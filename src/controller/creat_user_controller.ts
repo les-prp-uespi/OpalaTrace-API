@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { CreatUser } from "./creat_user"
+import { prisma } from "../dataBase/PrismaClient";
 
 export class CriarUsuarioController {
     async handle(req: Request, res: Response) {
@@ -19,5 +20,10 @@ export class CriarUsuarioController {
             return res.status(200).json(result);
         }
         return res.json("Erro ao cadastrar");
+    }
+
+    async index(req: Request, res: Response) {
+        const usuarios = await prisma.usuarios.findMany();
+        return res.json({ usuarios })
     }
 }
