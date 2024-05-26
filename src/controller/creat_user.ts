@@ -1,4 +1,4 @@
-import { prisma } from "./dataBase/PrismaClient";
+import { prisma } from "../dataBase/PrismaClient";
 import { Request,Response } from "express";
 import { hash } from "bcrypt";
 
