@@ -13,7 +13,8 @@ const criarLoginController = new LoginController();
 
 
 router.post("/post", criarUsuarioController.handle);
-router.get("/usuarios", criarUsuarioController.index);
+router.get("/usuarios", AutenticacaoMiddeware, criarUsuarioController.index);
+router.post("/auth", criarLoginController.authenticate);
 
 
 export default router;
