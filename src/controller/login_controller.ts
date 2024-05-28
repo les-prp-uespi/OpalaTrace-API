@@ -16,15 +16,17 @@ export class LoginController {
         const eSenhaValida = await compare(senha, usuario.senha)
 
         if (!eSenhaValida) {
-            return res.json({ error: "Senha inválida."})
+            return res.json({ error: "Senha inválida." })
         }
 
-        const token = sign({id: usuario.id}, "secret", {expiresIn: "1d"});
+        const token = sign({ id: usuario.id }, "secret", { expiresIn: "1d" });
 
-        return res.json({usuario, token})
+        const { nome } = usuario;
+
+        return res.json({ usuario: { nome, email }, token })
     }
 
-   
+
 
 
 }
