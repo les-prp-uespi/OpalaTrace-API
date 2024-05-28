@@ -11,7 +11,7 @@ export function AutenticacaoMiddeware(req: Request, res: Response, next: NextFun
 
     const { authorization } = req.headers;
 
-    if (!autorizacao) {
+    if (!authorization) {
         return res.status(401).json({ error: "Token não fornecido." });
     }
 
