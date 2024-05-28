@@ -15,7 +15,7 @@ export function AutenticacaoMiddeware(req: Request, res: Response, next: NextFun
         return res.status(401).json({ error: "Token não fornecido." });
     }
 
-    const [, token] = autorizacao.toString().split(" ");
+    const [, token] = authorization.split(" ");
 
     try {
         const decoded = verify(token, "secret");
