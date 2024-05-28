@@ -9,7 +9,7 @@ type TokenPayload = {
 
 export function AutenticacaoMiddeware(req: Request, res: Response, next: NextFunction) {
 
-    const { autorizacao } = req.headers;
+    const { authorization } = req.headers;
 
     if (!autorizacao) {
         return res.status(401).json({ error: "Token não fornecido." });
