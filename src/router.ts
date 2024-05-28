@@ -9,6 +9,7 @@ const router = Router();
 
 
 const criarUsuarioController = new CriarUsuarioController();
+const criarLoginController = new LoginController();
 
 
 router.post("/post", criarUsuarioController.handle);
