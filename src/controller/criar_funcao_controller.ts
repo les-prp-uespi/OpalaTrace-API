@@ -1,17 +1,15 @@
 import { Request, Response } from "express";
 import { CreatUser } from "./creat_user"
 import { prisma } from "../dataBase/PrismaClient";
+import { CreatFunction } from "../models/funcao";
 
-export class CriarUsuarioController {
+export class CriarFuncaoController {
     async handle(req: Request, res: Response) {
-        const { nome, email, senha, id, id_funcao } = req.body;
-        const criarusuario = new CreatUser();
-        const result = await criarusuario.execute({
+        const { nome,id} = req.body;
+        const criarfuncao = new CreatFunction();
+        const result = await criarfuncao.execute({
             id,
             nome,
-            email,
-            senha,
-            id_funcao,
         });
         if (result instanceof Error) {
             return res.status(400).json(result.message);
@@ -23,8 +21,8 @@ export class CriarUsuarioController {
         return res.json("Erro ao cadastrar");
     }
 
-    async index(req: Request, res: Response) {
-        const usuarios = await prisma.usuarios.findMany();
-        return res.json(usuarios)
+    async retornarFuncoes(req: Request, res: Response) {
+        const funcoes = await prisma.funcao.findMany();
+        return res.json(funcoes)
     }
 }

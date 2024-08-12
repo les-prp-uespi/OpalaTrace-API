@@ -7,11 +7,12 @@ interface IcreatUser{
     nome: string;
     email:string;
     senha: string;
+    id_funcao: string;
 
 }
 
 export class CreatUser{
-    async execute({id,nome,email,senha}: IcreatUser){
+    async execute({id,nome,email,senha, id_funcao}: IcreatUser){
 
         const emailExiste = await prisma.usuarios.findFirst({
             where: {
@@ -31,7 +32,7 @@ export class CreatUser{
       
           // salvar o client
         const usuario = prisma.usuarios.create({
-          data: { nome: nome, email:email, senha: hashPassword, id: id },
+          data: { nome: nome, email:email, senha: hashPassword, id_funcao: id_funcao},
      
           });
           return usuario;

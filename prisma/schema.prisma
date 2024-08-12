@@ -6,6 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
 }
 
 datasource db {
@@ -18,6 +19,9 @@ model Usuarios {
   email String @unique
   nome  String
   senha String
+
+  id_funcao String
+  funcao Funcao @relation(fields: [id_funcao], references: [id])
  
   @@map("usuario")
 }
@@ -26,6 +30,7 @@ model Funcao {
   id   String @id @default(uuid())
   nome String
   
+  usuario Usuarios[]
 
   @@map("funcao")
 }
