@@ -8,7 +8,6 @@ export class CriarUsuarioController {
         const { nome, email, senha, id, id_funcao } = req.body;
         const criarusuario = new Usuario();
         const result = await criarusuario.execute({
-            data,
             id,
             nome,
             email,
