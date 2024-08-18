@@ -14,7 +14,7 @@ const criarLoginController = new LoginController();
 const criarFuncaoController = new CriarFuncaoController();
 
 
-router.post("/post", criarUsuarioController.handle);
+router.post("/cadastrar-usuario", criarUsuarioController.handle);
 router.get("/usuarios", criarUsuarioController.index);
 router.post("/auth", criarLoginController.authenticate);
 router.post("/funcoes", criarFuncaoController.handle);
