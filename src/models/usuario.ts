@@ -40,15 +40,15 @@ export class Usuario {
     // O comando 'ls' e o argumento '-a' são passados separadamente.
     var command = spawn('ff', ['accounts', 'create', 'dev']);
 
-    command.stdout.on('data', output => {
+    command.stdout.on('data', (output: string) => {
       console.log("Output: ", output.toString());
     });
 
-    command.stderr.on('data', error => {
+    command.stderr.on('data', (error: string) => {
       console.error("Error: ", error.toString());
     });
 
-    command.on('close', code => {
+    command.on('close', (code: string) => {
       console.log(`Command exited with code: ${code}`);
     });
 
