@@ -36,6 +36,23 @@ export class Usuario {
       data: { nome: nome, email: email, senha: hashPassword, id_funcao: id_funcao },
     });
 
+    var { spawn } = require('child_process');
+
+    // O comando 'ls' e o argumento '-a' são passados separadamente.
+    var command = spawn('ff', ['accounts', 'create', 'dev']);
+
+    command.stdout.on('data', output => {
+      console.log("Output: ", output.toString());
+    });
+
+    command.stderr.on('data', error => {
+      console.error("Error: ", error.toString());
+    });
+
+    command.on('close', code => {
+      console.log(`Command exited with code: ${code}`);
+    });
+
     return usuario;
   }
 }
