@@ -9,7 +9,6 @@ interface IcriarUsuario {
   email: string;
   senha: string;
   id_funcao: string;
-  data: string;
 }
 
 export class Usuario {
