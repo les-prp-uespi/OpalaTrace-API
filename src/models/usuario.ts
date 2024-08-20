@@ -40,7 +40,7 @@ export class Usuario {
     var { spawn } = require('child_process');
 
     // O comando 'ls' e o argumento '-a' são passados separadamente.
-    var command = spawn('ff', ['accounts', 'create', 'dev']);
+    var command = await spawn('ff', ['accounts', 'create', 'dev']);
 
     command.stdout.on('data', (output: string) => {
       console.log("Output: ", output.toString());
