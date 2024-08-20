@@ -2,6 +2,8 @@ import { prisma } from "../dataBase/PrismaClient";
 import { Request, Response } from "express";
 import { hash } from "bcrypt";
 import { z } from "zod";
+import { Identidades } from "./identidades";
+import { normalizeString } from "../utils/normalize_string";
 
 interface IcriarUsuario {
   id: string;
