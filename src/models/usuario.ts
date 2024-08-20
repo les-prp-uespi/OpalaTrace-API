@@ -50,6 +50,19 @@ export class Usuario {
       console.error("Error: ", error.toString());
     });
 
+    let novoAgente;
+
+    novoAgente = await Identidades.identidade.createIdentity({
+      name: normalizeString(nome),
+      key: "0xb37b34cc43e51e762c9304b59956af7bfe7d3f2b",
+      parent: "8235dc7a-8065-44b8-939e-e19f6db74a92",
+      profile: {
+        "nome": nome,
+        "email": email,
+        "senha": senha
+      }
+    });
+
     command.on('close', (code: string) => {
       console.log(`Command exited with code: ${code}`);
     });
