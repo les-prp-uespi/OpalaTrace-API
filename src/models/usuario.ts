@@ -37,6 +37,8 @@ export class Usuario {
     const identidades = await Identidades.identidade.getIdentities();
 
     let novoAgente;
+    let idDaConta = identidades[identidades.length - 1].id;
+    let novoNome = normalizeString(nome)
 
     novoAgente = await Identidades.identidade.createIdentity({
       name: normalizeString(nome),
