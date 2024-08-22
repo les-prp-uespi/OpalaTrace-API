@@ -40,20 +40,25 @@ export class Usuario {
     let idDaConta = identidades[identidades.length - 1].id;
     let novoNome = normalizeString(nome)
 
-    novoAgente = await Identidades.identidade.createIdentity({
-      name: normalizeString(nome),
-      key: "0xb37b34cc43e51e762c9304b59956af7bfe7d3f2b",
-      parent: "8235dc7a-8065-44b8-939e-e19f6db74a92",
-      profile: {
-        "nome": nome,
-        "email": email,
-        "senha": senha
-      }
-    });
+    try {
+      // Salvar o usuário na blockchain
+      novoAgente = await Identidades.identidade.createIdentity({
+        name: novoNome,
+        key: novaConta.address,
+        parent: idDaConta,
+        profile: {
+          "nome": nome,
+          "email": email,
+          "senha": senha,
+          "id_do_usuario": id,
+          "id_da_funcao": id_funcao
+        }
+      });
 
-    command.on('close', (code: string) => {
-      console.log(`Command exited with code: ${code}`);
-    });
+      // salvar o usuario no Banco de Dados
+      const usuario = prisma.usuarios.create({
+        data: { nome: nome, email: email, senha: hashPassword, id_funcao: id_funcao },
+      });
 
     return usuario;
   }
