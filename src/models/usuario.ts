@@ -28,7 +28,6 @@ export class Usuario {
       return new Error("Usuario já existe");
     }
 
-
     // criptografar a senha
     const hashPassword = await hash(senha, 10);
 
@@ -60,6 +59,13 @@ export class Usuario {
         data: { nome: nome, email: email, senha: hashPassword, id_funcao: id_funcao },
       });
 
-    return usuario;
+      return usuario;
+    } catch (error) {
+      console.error('Erro ao cadastrar o usuário: ', error)
+    }
+
+
+    return 'Erro ao cadastrar o usuário.';
+
   }
 }
