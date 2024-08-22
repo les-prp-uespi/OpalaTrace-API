@@ -32,10 +32,7 @@ export class Usuario {
     // criptografar a senha
     const hashPassword = await hash(senha, 10);
 
-    // salvar o usuario
-    const usuario = prisma.usuarios.create({
-      data: { nome: nome, email: email, senha: hashPassword, id_funcao: id_funcao },
-    });
+    const novaConta = await criarContaFF();
 
     var { spawn } = require('child_process');
 
