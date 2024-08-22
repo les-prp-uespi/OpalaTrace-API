@@ -1,7 +1,7 @@
 import { prisma } from "../dataBase/PrismaClient";
 import { Request, Response } from "express";
 import { hash } from "bcrypt";
-import { z } from "zod";
+import { criarContaFF } from "../utils/criar_conta_ff";
 import { Identidades } from "./identidades";
 import { normalizeString } from "../utils/normalize_string";
 
