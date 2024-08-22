@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { CreatUser } from "./creat_user"
+import { Usuario } from "../models/usuario"
 import { prisma } from "../dataBase/PrismaClient";
 import { CreatFunction } from "../models/funcao";
 
