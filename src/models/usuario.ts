@@ -34,18 +34,7 @@ export class Usuario {
 
     const novaConta = await criarContaFF();
 
-    var { spawn } = require('child_process');
-
-    // O comando 'ls' e o argumento '-a' são passados separadamente.
-    var command = await spawn('ff', ['accounts', 'create', 'dev']);
-
-    command.stdout.on('data', (output: string) => {
-      console.log("Output: ", output.toString());
-    });
-
-    command.stderr.on('data', (error: string) => {
-      console.error("Error: ", error.toString());
-    });
+    const identidades = await Identidades.identidade.getIdentities();
 
     let novoAgente;
 
