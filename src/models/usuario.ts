@@ -5,6 +5,7 @@ import { criarContaFF } from "../utils/criar_conta_ff";
 import { Identidades } from "./identidades";
 import { normalizeString } from "../utils/normalize_string";
 import { criarMintDeOpala, criarPoolDeOpala } from "../utils/adicionar_opala";
+import FireFly from "@hyperledger/firefly-sdk";
 
 interface IcriarUsuario {
   id: string;
