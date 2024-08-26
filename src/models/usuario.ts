@@ -4,6 +4,7 @@ import { hash } from "bcrypt";
 import { criarContaFF } from "../utils/criar_conta_ff";
 import { Identidades } from "./identidades";
 import { normalizeString } from "../utils/normalize_string";
+import { criarMintDeOpala, criarPoolDeOpala } from "../utils/adicionar_opala";
 
 interface IcriarUsuario {
   id: string;
