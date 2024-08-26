@@ -3,6 +3,7 @@ import { CriarUsuarioController } from "./controller/creat_user_controller";
 import { LoginController } from "./controller/login_controller";
 import { AutenticacaoMiddeware } from "./middleware/auth";
 import { CriarFuncaoController } from "./controller/criar_funcao_controller";
+import { criarOpalaController } from "./controller/criar_opala_controller";
 
 
 const router = Router();
