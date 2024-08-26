@@ -69,4 +69,9 @@ export class Usuario {
     return 'Erro ao cadastrar o usuário.';
 
   }
+
+  async cadastrarOpala(req: Request, nome: string, amount: string) {
+    await criarPoolDeOpala(nome);
+    await criarMintDeOpala(nome, amount);
+  }
 }
