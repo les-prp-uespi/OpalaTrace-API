@@ -80,4 +80,30 @@ export class Usuario {
     await criarPoolDeOpala(nome);
     await criarMintDeOpala(nome, amount);
   }
+
+  async transferirOpala(req: Request, pool: string, amount: string, destino: string) {
+    const pessoa1 = new FireFly({ host: 'http://localhost:5000', namespace: 'default' });
+    console.log(`Dados: \nPool:${pool}, Destino: ${destino}, \nAmount: ${amount}`)
+
+    // Importante: isto é um teste. Pra fazer a transferência de 'opala_7', é preciso fazer um 'mint token' antes.
+    const minte = await criarMintDeOpala(pool, amount)
+
+    if (minte) {
+      const transferencia = await pessoa1.transferTokens({
+        // from: origem,
+        pool: pool,
+        amount: amount,
+        to: destino,
+        tokenIndex: "1"
+      })
+
+      return { type: 'token_transfer', id: transferencia.localId }
+
+    }
+
+    else {
+      return "Erro ao transferir opala.";
+    }
+
+  }
 }
