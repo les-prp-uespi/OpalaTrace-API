@@ -13,6 +13,7 @@ const router = Router();
 const criarUsuarioController = new CriarUsuarioController();
 const criarLoginController = new LoginController();
 const criarFuncaoController = new CriarFuncaoController();
+const criarOpala = new criarOpalaController();
 
 
 router.post("/cadastrar-usuario", criarUsuarioController.handle);
