@@ -21,6 +21,7 @@ router.get("/usuarios", criarUsuarioController.index);
 router.post("/auth", criarLoginController.authenticate);
 router.post("/funcoes", criarFuncaoController.handle);
 router.get("/listar-funcoes", criarFuncaoController.retornarFuncoes);
+router.post("/cadastrar-opala", criarOpala.adicionar)
 
 
 export default router;
