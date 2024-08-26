@@ -20,4 +20,19 @@ export class criarOpalaController {
         }
         return res.json("Erro ao cadastrar o agente.");
     }
+
+    async transferir(req: Request, res: Response) {
+        const usuario = new Usuario();
+        const {pool, amount, destino} = req.body
+        const transfere = await usuario.transferirOpala(req, pool, amount, destino)
+
+        if (transfere instanceof Error) {
+            return res.status(400).json(transfere.message);
+        }
+        else if (transfere) {
+
+            return res.status(200).json(transfere);
+        }
+        return res.json("Erro ao cadastrar o agente.");
+    }
 }
