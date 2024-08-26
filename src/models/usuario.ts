@@ -14,6 +14,12 @@ interface IcriarUsuario {
   id_funcao: string;
 }
 
+interface Opala {
+  amount: string,
+  destino: string,
+  pool: string
+}
+
 export class Usuario {
   async execute({ id, nome, email, senha, id_funcao }: IcriarUsuario) {
 
