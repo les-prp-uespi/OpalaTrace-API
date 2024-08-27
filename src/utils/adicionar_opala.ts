@@ -14,6 +14,32 @@ export async function criarPoolDeOpala(nome: string) {
     return { type: 'token_pool', id: pool.id }
 }
 
+async function verificarExistenciaDeOpala(nome: string, amount: string) {
+    const usuario = Identidades.identidade;
+    const opalaExiste = await usuario.getTokenPools();
+
+    if (amount == "1") {
+        var existe = false;
+
+        opalaExiste.forEach(element => {
+            if (element.name == nome) {
+
+                console.log('Existe');
+                existe = true
+            }
+        });
+
+        return existe;
+    }
+
+    else {
+        console.log('Amount:', amount);
+        return false;
+    }
+
+
+}
+
 export async function criarMintDeOpala(nome: string, amount: string) {
     const usuario = Identidades.identidade;
 
