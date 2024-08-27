@@ -48,7 +48,7 @@ export async function criarMintDeOpala(nome: string, amount: string) {
         console.log(`\nA Opala ${resultado ? 'existe no sistema.' : 'não existe no sistema.'}`);
         console.log('\t ', resultado)
 
-    const minte = await usuario.mintTokens({ pool: nome, amount: amount })
+        const minte = await usuario.mintTokens({ pool: nome, amount: amount })
 
-    return { type: 'token_transfer', id: minte.localId }
-}
+        return { type: 'token_transfer', id: minte.localId }
+    }
