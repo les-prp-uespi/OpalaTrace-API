@@ -6,7 +6,7 @@ interface Opala {
     nome: string
 }
 
-export async function criarPoolDeOpala(nome : string) {
+export async function criarPoolDeOpala(nome: string) {
     const usuario = Identidades.identidade;
 
     const pool = await usuario.createTokenPool({ name: nome, type: 'nonfungible' }, { publish: true });
