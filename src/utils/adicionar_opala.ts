@@ -52,3 +52,8 @@ export async function criarMintDeOpala(nome: string, amount: string) {
 
         return { type: 'token_transfer', id: minte.localId }
     }
+    else{ 
+        return false;
+    }
+
+}
