@@ -42,6 +42,11 @@ async function verificarExistenciaDeOpala(nome: string, amount: string) {
 
 export async function criarMintDeOpala(nome: string, amount: string) {
     const usuario = Identidades.identidade;
+    const resultado = await verificarExistenciaDeOpala(nome, amount);
+
+    if (resultado) {
+        console.log(`\nA Opala ${resultado ? 'existe no sistema.' : 'não existe no sistema.'}`);
+        console.log('\t ', resultado)
 
     const minte = await usuario.mintTokens({ pool: nome, amount: amount })
 
