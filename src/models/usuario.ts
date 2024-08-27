@@ -79,7 +79,7 @@ export class Usuario {
 
   async cadastrarOpala(req: Request, nome: string, amount: string) {
     await criarPoolDeOpala(nome);
-    
+
   }
 
   async transferirOpala(req: Request, pool: string, amount: string, destino: string) {
