@@ -107,4 +107,41 @@ export class Usuario {
     }
 
   }
+
+  async atualizarUsuario(req: Request, res: Response) {
+    const { idAtual } = req.params;
+    const { novoNome, novoEmail, novaFuncao } = req.body;
+  
+    // Buscar o usuário pelo ID
+    const usuarioProcurado = await prisma.usuarios.findFirst({
+      where: {
+        id: {
+          equals: idAtual,
+          mode: "insensitive",
+        },
+      },
+    });
+  
+    // Verifica se o usuário foi encontrado
+    if (usuarioProcurado) {
+      // Atualiza os dados do usuário no banco de dados
+      const usuarioAtualizado = await prisma.usuarios.update({
+        where: {
+          id: idAtual,
+        },
+        data: {
+          nome: novoNome,
+          email: novoEmail,
+          id_funcao: novaFuncao,
+        },
+      });
+  
+      // Retorna o usuário atualizado
+      return res.json(usuarioAtualizado);
+    } else {
+      // Caso o usuário não seja encontrado
+      return res.status(404).json({ message: 'Usuário não encontrado' });
+    }
+  }
+  
 }
