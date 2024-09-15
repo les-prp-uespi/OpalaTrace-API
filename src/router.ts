@@ -23,6 +23,7 @@ router.post("/funcoes", criarFuncaoController.handle);
 router.get("/listar-funcoes", criarFuncaoController.retornarFuncoes);
 router.post("/cadastrar-opala", criarOpala.adicionar);
 router.post("/transferir-opala", criarOpala.transferir);
+router.put("/atualizar-usuario/:idAtual", criarUsuarioController.editarInfoDoUsuario);
 
 
 export default router;
