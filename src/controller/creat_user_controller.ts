@@ -28,4 +28,10 @@ export class CriarUsuarioController {
         const usuarios = await prisma.usuarios.findMany();
         return res.json(usuarios)
     }
+
+    async editarInfoDoUsuario(req: Request, res: Response) {
+        const usuario = new Usuario();
+
+        usuario.atualizarUsuario(req, res);
+    }
 }
