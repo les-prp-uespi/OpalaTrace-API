@@ -110,7 +110,7 @@ export class Usuario {
 
   async atualizarUsuario(req: Request, res: Response) {
     const { idAtual } = req.params;
-    const { novoNome, novoEmail, novaFuncao } = req.body;
+    const { novoNome, novoEmail, novaFuncao, novaSenha } = req.body;
   
     // Buscar o usuário pelo ID
     const usuarioProcurado = await prisma.usuarios.findFirst({
@@ -132,6 +132,7 @@ export class Usuario {
         data: {
           nome: novoNome,
           email: novoEmail,
+          senha: novaSenha,
           id_funcao: novaFuncao,
         },
       });
