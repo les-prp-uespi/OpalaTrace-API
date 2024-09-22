@@ -24,7 +24,7 @@ interface Opala {
 }
 
 export class Usuario {
-  async execute({nome, email, senha, id_funcao }: IcriarUsuario) {
+  async execute({ id, nome, email, senha, id_funcao }: IcriarUsuario) {
 
     const emailExiste = await prisma.usuarios.findFirst({
       where: {
@@ -37,6 +37,9 @@ export class Usuario {
     if (emailExiste) {
       return new Error("Usuario já existe");
     }
+
+    // Criação do ID do usuário
+    const id = uuidv4()
 
     // criptografar a senha
     const hashPassword = await hash(senha, 10);
