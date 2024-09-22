@@ -24,7 +24,7 @@ interface Opala {
 }
 
 export class Usuario {
-  async execute({nome, email, senha, id_funcao }: IcriarUsuario) {
+  async execute({ id, nome, email, senha, id_funcao }: IcriarUsuario) {
 
     const emailExiste = await prisma.usuarios.findFirst({
       where: {
@@ -69,7 +69,7 @@ export class Usuario {
 
       // salvar o usuario no Banco de Dados
       const usuario = prisma.usuarios.create({
-        data: { nome: nome, email: email, senha: hashPassword, id_funcao: id_funcao },
+        data: { id: id, nome: nome, email: email, senha: hashPassword, id_funcao: id_funcao },
       });
 
       return usuario;
