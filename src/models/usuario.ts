@@ -142,7 +142,7 @@ export class Usuario {
           id_funcao: novaFuncao,
         },
       });
-  
+
       // Retorna o usuário atualizado
       return res.json(usuarioAtualizado);
     } else {
@@ -150,5 +150,5 @@ export class Usuario {
       return res.status(404).json({ message: 'Usuário não encontrado' });
     }
   }
-  
+
 }
