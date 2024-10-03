@@ -117,7 +117,7 @@ export class Usuario {
     const { idAtual } = req.params;
     const { novoNome, novoEmail, novaFuncao, novaSenha } = req.body;
     const hashPassword = await hash(novaSenha, 10);
-  
+
     // Buscar o usuário pelo ID
     const usuarioProcurado = await prisma.usuarios.findFirst({
       where: {
@@ -127,7 +127,7 @@ export class Usuario {
         },
       },
     });
-  
+
     // Verifica se o usuário foi encontrado
     if (usuarioProcurado) {
       // Atualiza os dados do usuário no banco de dados
