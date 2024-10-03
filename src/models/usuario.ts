@@ -62,7 +62,6 @@ export class Usuario {
           "nome": nome,
           "email": email,
           "senha": senha,
-          "id_do_usuario": id,
           "id_da_funcao": id_funcao
         }
       });
