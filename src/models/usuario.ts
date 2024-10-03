@@ -67,6 +67,9 @@ export class Usuario {
         }
       });
 
+      // Criação do ID do usuário
+      const id = novoAgente.id;
+
       // salvar o usuario no Banco de Dados
       const usuario = prisma.usuarios.create({
         data: { id: id, nome: nome, email: email, senha: hashPassword, id_funcao: id_funcao },
