@@ -101,7 +101,7 @@ export class Usuario {
         pool: pool,
         amount: "1",
         to: destino,
-        tokenIndex: "1"
+        tokenIndex: indice
       })
 
       return { type: 'token_transfer', id: transferencia.localId }
