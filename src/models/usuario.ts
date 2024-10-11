@@ -92,7 +92,8 @@ export class Usuario {
     console.log(`Dados: \nPool:${pool}, Destino: ${destino}, \nAmount: ${"1"}`)
 
     // Importante: isto é um teste. Pra fazer a transferência de 'opala_7', é preciso fazer um 'mint token' antes.
-    const minte = await criarMintDeOpala(pool, amount)
+    const minte = await criarMintDeOpala(pool, "1")
+    console.log("\n\nÍndice: ", indice);
 
     if (minte) {
       const transferencia = await pessoa1.transferTokens({
