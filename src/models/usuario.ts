@@ -89,7 +89,7 @@ export class Usuario {
 
   async transferirOpala(req: Request, pool: string, destino: string, indice: string) {
     const pessoa1 = new FireFly({ host: 'http://localhost:5000', namespace: 'default' });
-    console.log(`Dados: \nPool:${pool}, Destino: ${destino}, \nAmount: ${amount}`)
+    console.log(`Dados: \nPool:${pool}, Destino: ${destino}, \nAmount: ${"1"}`)
 
     // Importante: isto é um teste. Pra fazer a transferência de 'opala_7', é preciso fazer um 'mint token' antes.
     const minte = await criarMintDeOpala(pool, amount)
