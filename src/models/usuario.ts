@@ -99,7 +99,7 @@ export class Usuario {
       const transferencia = await pessoa1.transferTokens({
         // from: origem,
         pool: pool,
-        amount: amount,
+        amount: "1",
         to: destino,
         tokenIndex: "1"
       })
