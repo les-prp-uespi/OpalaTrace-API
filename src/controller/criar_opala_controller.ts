@@ -4,12 +4,12 @@ import { Usuario } from "../models/usuario";
 
 export class criarOpalaController {
     async adicionar(req: Request, res: Response) {
-        const {nome, amount} = req.body;
+        const {nome} = req.body;
 
         // TODO: aqui, ele está executando a mesma função da classe usuário.
         // Apagar essas funções, criar um objeto de Usuario e chamar o método que usa as duas funções abaixo.
         const usuario = new Usuario();
-        const opala = usuario.cadastrarOpala(req, nome, amount)
+        const opala = usuario.cadastrarOpala(req, nome)
 
         if (opala instanceof Error) {
             return res.status(400).json(opala.message);
