@@ -9,7 +9,7 @@ export class criarOpalaController {
         // TODO: aqui, ele está executando a mesma função da classe usuário.
         // Apagar essas funções, criar um objeto de Usuario e chamar o método que usa as duas funções abaixo.
         const usuario = new Usuario();
-        const opala = usuario.cadastrarOpala(req, nome)
+        const opala = usuario.cadastrarOpala(req, res, nome, id_usuario, id_funcao, destino, "1");
 
         if (opala instanceof Error) {
             return res.status(400).json(opala.message);
