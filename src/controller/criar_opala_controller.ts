@@ -4,7 +4,7 @@ import { Usuario } from "../models/usuario";
 
 export class criarOpalaController {
     async adicionar(req: Request, res: Response) {
-        const {nome} = req.body;
+        const {nome, id_funcao, destino, id_usuario} = req.body;
 
         // TODO: aqui, ele está executando a mesma função da classe usuário.
         // Apagar essas funções, criar um objeto de Usuario e chamar o método que usa as duas funções abaixo.
