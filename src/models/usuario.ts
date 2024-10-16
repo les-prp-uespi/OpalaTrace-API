@@ -83,10 +83,76 @@ export class Usuario {
 
   }
 
-  async cadastrarOpala(req: Request, nome: string) {
-    await criarPoolDeOpala(nome);
+async cadastrarOpala(
+  req: Request, 
+  res: Response, 
+  nome: string, 
+  id_usuario: string, 
+  id_funcao: string, 
+  destino: string, 
+  indice: string
+) {
+  try {
+    // Verifica se o usuário existe
+    const idEncontrado = await prisma.usuarios.findFirst({
+      where: { 
+        id: { 
+          equals: id_usuario, 
+          mode: "insensitive",
+        },
+      },
+    });
 
+    // Caso o usuário seja encontrado
+    if (idEncontrado) {
+      // Verifica se o usuário tem permissão para cadastrar Opalas (id de lapidadores)
+      if (
+        idEncontrado.id_funcao == "0d1626ef-8dab-4f4c-9128-3dd3a57c515d" || 
+        idEncontrado.id_funcao == "820529c9-4510-4b3e-9c3b-736a682fb6eb"
+      ) {
+        // Chama o método criarPoolDeOpala para criar a opala
+        const opalaCriada = await criarPoolDeOpala(nome);
+        
+        // Verifica se a opala foi criada com sucesso
+        if (opalaCriada) {
+          // Realiza a transferência da opala criada
+          await this.transferirOpala(req, opalaCriada.id, destino, "1");
+          
+          // Retorna sucesso ao cliente
+          res.status(200).json({
+            mensagem: "Opala criada e transferida com sucesso.",
+            opala: opalaCriada,
+          });
+          
+          console.log("Opala criada com sucesso: ", opalaCriada);
+        } else {
+          // Retorna erro se a criação falhou
+          res.status(500).json({ 
+            mensagem: "Falha ao criar a Opala." 
+          });
+        }
+      } else {
+        // Se o usuário não tem permissão, retorna erro
+        res.status(403).json({ 
+          mensagem: "Somente lapidadores podem cadastrar Opalas." 
+        });
+        console.error("Usuário sem permissão para cadastrar Opalas.");
+      }
+    } else {
+      // Caso o usuário não seja encontrado
+      res.status(404).json({ 
+        mensagem: "Usuário não encontrado." 
+      });
+    }
+  } catch (erro) {
+    // Tratamento de erros genéricos
+    console.error("Erro ao cadastrar Opala: ", erro);
+    res.status(500).json({ 
+      mensagem: "Erro interno ao cadastrar Opala." 
+    });
   }
+}
+
 
   async transferirOpala(req: Request, pool: string, destino: string, indice: string) {
     const pessoa1 = new FireFly({ host: 'http://localhost:5000', namespace: 'default' });
