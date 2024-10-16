@@ -12,13 +12,13 @@ export class criarOpalaController {
         const opala = usuario.cadastrarOpala(req, res, nome, id_usuario, id_funcao, destino, "1");
 
         if (opala instanceof Error) {
-            return res.status(400).json(opala.message);
+            console.log(opala.message);
         }
         else if (opala) {
 
-            return res.status(200).json(opala);
+            console.log(opala);
         }
-        return res.json("Erro ao cadastrar o agente.");
+        // return res.json("Erro ao cadastrar o agente.");
     }
 
     async transferir(req: Request, res: Response) {
