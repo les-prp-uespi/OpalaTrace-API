@@ -11,7 +11,7 @@ export async function criarPoolDeOpala(nome: string) {
 
     const pool = await usuario.createTokenPool({ name: nome, type: 'nonfungible' }, { publish: true });
 
-    return { type: 'token_pool', id: pool.id }
+    return pool;
 }
 
 async function verificarExistenciaDeOpala(nome: string, amount: string) {
