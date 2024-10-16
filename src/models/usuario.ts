@@ -20,7 +20,8 @@ interface IcriarUsuario {
 interface Opala {
   amount: string,
   destino: string,
-  pool: string
+  pool: string;
+  name: string;
 }
 
 export class Usuario {
