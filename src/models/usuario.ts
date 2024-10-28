@@ -111,7 +111,7 @@ async cadastrarOpala(
         idEncontrado.id_funcao == "820529c9-4510-4b3e-9c3b-736a682fb6eb"
       ) {
         // Chama o método criarPoolDeOpala para criar a opala
-        const opalaCriada = await criarPoolDeOpala(nome);
+        const opalaCriada = await criarMintDeOpala("opala_30", "1");
         
         // Verifica se a opala foi criada com sucesso
         if (opalaCriada) {
