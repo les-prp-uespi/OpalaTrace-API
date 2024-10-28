@@ -116,7 +116,7 @@ async cadastrarOpala(
         // Verifica se a opala foi criada com sucesso
         if (opalaCriada) {
           // Realiza a transferência da opala criada
-          await this.transferirOpala(req, opalaCriada.id, destino, "1");
+          await this.transferirOpala(req, "opala_30", destino, "7", opalaCriada);
           
           // Retorna sucesso ao cliente
           res.status(200).json({
