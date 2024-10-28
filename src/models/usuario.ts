@@ -89,8 +89,7 @@ async cadastrarOpala(
   nome: string, 
   id_usuario: string, 
   id_funcao: string, 
-  destino: string, 
-  indice: string
+  destino: string,
 ) {
   try {
     // Verifica se o usuário existe
@@ -159,12 +158,13 @@ async cadastrarOpala(
     console.log(`Dados: \nPool:${pool}, Destino: ${destino}, \nAmount: ${"1"}`)
 
     // Importante: isto é um teste. Pra fazer a transferência de 'opala_7', é preciso fazer um 'mint token' antes.
-    const minte = await criarMintDeOpala(pool, "1")
+    // const minte = await criarMintDeOpala(pool, "1")
     console.log("\n\nÍndice: ", indice);
 
     if (minte) {
       const transferencia = await pessoa1.transferTokens({
         // from: origem,
+        // key: "0x3a03ddf449677fd086bc6dcce286b3c275ebe811",
         pool: pool,
         amount: "1",
         to: destino,
