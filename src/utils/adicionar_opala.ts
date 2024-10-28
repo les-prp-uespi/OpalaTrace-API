@@ -50,7 +50,7 @@ export async function criarMintDeOpala(nome: string, amount: string) {
 
         const minte = await usuario.mintTokens({ pool: nome, amount: amount })
 
-        return { type: 'token_transfer', id: minte.localId }
+        return { type: 'token_transfer', id: minte.localId, tokenIndex: minte.tokenIndex}
     }
     else{ 
         return false;
