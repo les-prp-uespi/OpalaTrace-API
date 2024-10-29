@@ -40,20 +40,45 @@ async function verificarExistenciaDeOpala(nome: string, amount: string) {
 
 }
 
-export async function criarMintDeOpala(nome: string, amount: string) {
-    const usuario = Identidades.identidade;
+export async function criarMintDeOpala(res: Response, nome: string, amount: string, local: string, peso: string, tipo: string) {
     const resultado = await verificarExistenciaDeOpala(nome, amount);
 
     if (resultado) {
-        console.log(`\nA Opala ${resultado ? 'existe no sistema.' : 'não existe no sistema.'}`);
-        console.log('\t ', resultado)
-
-        const minte = await usuario.mintTokens({ pool: nome, amount: amount })
-
-        return { type: 'token_transfer', id: minte.localId, tokenIndex: minte.tokenIndex}
-    }
-    else{ 
+        try {
+            const usuario = Identidades.identidade;
+      
+            const transfer = await usuario.mintTokens({
+              pool: 'opala_30',
+              amount: '1',
+              message: {
+                header: {
+                  tag: 'cadastro_de_opala',
+                  topics: undefined,
+                },
+                data: [
+                  {
+                    datatype: {
+                      name: "opalaData",
+                      version: "1.0"
+                    },
+                    value: {
+                      "local": local,
+                      "peso": `${peso}g`,
+                      "tipo": tipo
+                    }
+                  }
+                ],
+              }
+            });
+      
+            // Envie a resposta com a ID da transferência
+            return res.json({ type: 'token_transfer', id: transfer.localId });
+          } catch (error) {
+            // Log do erro para depuração
+            console.error("Erro ao executar mintTokens:", error);
+            return res.status(500).json({ error: "Erro ao executar mintTokens", details: error });
+          }
+    } else { 
         return false;
     }
-
 }
