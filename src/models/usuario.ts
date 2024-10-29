@@ -84,13 +84,14 @@ export class Usuario {
 
   }
 
-async cadastrarOpala(
-  req: Request, 
-  res: Response, 
-  nome: string, 
-  id_usuario: string, 
-  id_funcao: string, 
-  destino: string,
+  async cadastrarOpala(
+    req: Request,
+    res: Response,
+    id_usuario: string,
+    destino: string,
+    local: string,
+    peso: string,
+    tipo: string
 ) {
   try {
     // Verifica se o usuário existe
