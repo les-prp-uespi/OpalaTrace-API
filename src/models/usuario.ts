@@ -92,17 +92,17 @@ export class Usuario {
     local: string,
     peso: string,
     tipo: string
-) {
-  try {
-    // Verifica se o usuário existe
-    const idEncontrado = await prisma.usuarios.findFirst({
-      where: { 
-        id: { 
-          equals: id_usuario, 
-          mode: "insensitive",
+  ) {
+    try {
+      // Verifica se o usuário existe
+      const idEncontrado = await prisma.usuarios.findFirst({
+        where: {
+          id: {
+            equals: id_usuario,
+            mode: "insensitive",
+          },
         },
-      },
-    });
+      });
 
     // Caso o usuário seja encontrado
     if (idEncontrado) {
