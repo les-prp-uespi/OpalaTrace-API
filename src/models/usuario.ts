@@ -22,6 +22,7 @@ interface Opala {
   destino: string,
   pool: string;
   name: string;
+  tokenIndex: string
 }
 
 export class Usuario {
