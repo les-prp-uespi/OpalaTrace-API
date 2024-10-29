@@ -112,47 +112,47 @@ export class Usuario {
           idEncontrado.id_funcao == "820529c9-4510-4b3e-9c3b-736a682fb6eb"
         ) {
           // Chama o método criarPoolDeOpala para criar a opala
-        const opalaCriada = await criarMintDeOpala("opala_30", "1");
-        
-        // Verifica se a opala foi criada com sucesso
-        if (opalaCriada) {
-          // Realiza a transferência da opala criada
-          await this.transferirOpala(req, "opala_30", destino, "7", opalaCriada);
-          
-          // Retorna sucesso ao cliente
-          res.status(200).json({
-            mensagem: "Opala criada e transferida com sucesso.",
-            opala: opalaCriada,
-          });
-          
+          const opalaCriada = await criarMintDeOpala(res, "opala_30", "1", local, peso, tipo);
+
+          // Verifica se a opala foi criada com sucesso
+          if (opalaCriada) {
+            // Realiza a transferência da opala criada
+            await this.transferirOpala(req, res, "opala_30", destino, "24", opalaCriada);
+
+            // Retorna sucesso ao cliente
+            res.status(200).json({
+              mensagem: "Opala criada e transferida com sucesso.",
+              opala: opalaCriada,
+            });
+
           console.log("Opala criada com sucesso: ", opalaCriada);
+          } else {
+            // Retorna erro se a criação falhou
+            res.status(500).json({
+              mensagem: "Falha ao criar a Opala."
+            });
+          }
         } else {
-          // Retorna erro se a criação falhou
-          res.status(500).json({ 
-            mensagem: "Falha ao criar a Opala." 
+          // Se o usuário não tem permissão, retorna erro
+          res.status(403).json({
+            mensagem: "Somente lapidadores podem cadastrar Opalas."
           });
+          console.error("Usuário sem permissão para cadastrar Opalas.");
         }
       } else {
-        // Se o usuário não tem permissão, retorna erro
-        res.status(403).json({ 
-          mensagem: "Somente lapidadores podem cadastrar Opalas." 
+        // Caso o usuário não seja encontrado
+        res.status(404).json({
+          mensagem: "Usuário não encontrado."
         });
-        console.error("Usuário sem permissão para cadastrar Opalas.");
       }
-    } else {
-      // Caso o usuário não seja encontrado
-      res.status(404).json({ 
-        mensagem: "Usuário não encontrado." 
+    } catch (erro) {
+      // Tratamento de erros genéricos
+      console.error("Erro ao cadastrar Opala: ", erro);
+      res.status(500).json({
+        mensagem: "Erro interno ao cadastrar Opala."
       });
     }
-  } catch (erro) {
-    // Tratamento de erros genéricos
-    console.error("Erro ao cadastrar Opala: ", erro);
-    res.status(500).json({ 
-      mensagem: "Erro interno ao cadastrar Opala." 
-    });
   }
-}
 
 
   async transferirOpala(req: Request, pool: string, destino: string, indice: string, minte: any) {
