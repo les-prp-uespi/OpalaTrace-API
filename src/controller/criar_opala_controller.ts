@@ -6,8 +6,6 @@ export class criarOpalaController {
     async adicionar(req: Request, res: Response) {
         const { nome, id_funcao, destino, id_usuario, local, peso, tipo } = req.body;
 
-        // TODO: aqui, ele está executando a mesma função da classe usuário.
-        // Apagar essas funções, criar um objeto de Usuario e chamar o método que usa as duas funções abaixo.
         const usuario = new Usuario();
         const opala = usuario.cadastrarOpala(req, res, id_usuario, destino, local, peso, tipo);
 
@@ -23,8 +21,8 @@ export class criarOpalaController {
 
     async transferir(req: Request, res: Response) {
         const usuario = new Usuario();
-        const {pool, destino, indice} = req.body
-        const transfere = await usuario.transferirOpala(req, pool, destino, indice)
+        const { pool, destino, indice } = req.body
+        const transfere = await usuario.transferirOpala(req, res, pool, destino, indice, "")
 
         if (transfere instanceof Error) {
             console.log(transfere.message);
