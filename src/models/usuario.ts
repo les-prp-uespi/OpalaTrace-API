@@ -104,14 +104,14 @@ export class Usuario {
         },
       });
 
-    // Caso o usuário seja encontrado
-    if (idEncontrado) {
-      // Verifica se o usuário tem permissão para cadastrar Opalas (id de lapidadores)
-      if (
-        idEncontrado.id_funcao == "0d1626ef-8dab-4f4c-9128-3dd3a57c515d" || 
-        idEncontrado.id_funcao == "820529c9-4510-4b3e-9c3b-736a682fb6eb"
-      ) {
-        // Chama o método criarPoolDeOpala para criar a opala
+      // Caso o usuário seja encontrado
+      if (idEncontrado) {
+        // Verifica se o usuário tem permissão para cadastrar Opalas (id de lapidadores)
+        if (
+          idEncontrado.id_funcao == "0d1626ef-8dab-4f4c-9128-3dd3a57c515d" ||
+          idEncontrado.id_funcao == "820529c9-4510-4b3e-9c3b-736a682fb6eb"
+        ) {
+          // Chama o método criarPoolDeOpala para criar a opala
         const opalaCriada = await criarMintDeOpala("opala_30", "1");
         
         // Verifica se a opala foi criada com sucesso
