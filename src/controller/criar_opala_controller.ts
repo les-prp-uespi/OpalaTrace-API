@@ -22,15 +22,20 @@ export class criarOpalaController {
     async transferir(req: Request, res: Response) {
         const usuario = new Usuario();
         const { pool, destino, indice } = req.body
-        const transfere = await usuario.transferirOpala(req, res, pool, destino, indice, "")
-
-        if (transfere instanceof Error) {
-            console.log(transfere.message);
+        try {
+            const transfere = await usuario.transferirOpala(req, res, pool, destino, indice)
+            if (transfere instanceof Error) {
+                console.log(transfere.message);
+            }
+            else if (transfere) {
+    
+                console.log(transfere);
+            }
+            
+        } catch (error) {
+            console.error("Erro em criar_opala_controller: ", error);
         }
-        else if (transfere) {
 
-            console.log(transfere);
-        }
         console.log("Erro ao cadastrar o agente.");
     }
 }
