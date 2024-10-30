@@ -91,7 +91,8 @@ export class Usuario {
     destino: string,
     local: string,
     peso: string,
-    tipo: string
+    tipo: string,
+    indice: string
   ) {
     try {
       // Verifica se o usuário existe
