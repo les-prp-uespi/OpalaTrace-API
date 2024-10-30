@@ -153,7 +153,6 @@ export class Usuario {
               opala: transfer,
             });
 
-          console.log("Opala criada com sucesso: ", opalaCriada);
           } else {
             // Retorna erro se a criação falhou
             res.status(500).json({
@@ -185,12 +184,12 @@ export class Usuario {
 
   async transferirOpala(req: Request, res: Response, pool: string, destino: string, indice: string) {
     const pessoa1 = new FireFly({ host: 'http://localhost:5000', namespace: 'default' });
-    console.log(`Dados: \nPool:${pool}, Destino: ${destino}, \nAmount: ${"1"}`)
 
     try {
       const transferencia = await pessoa1.transferTokens({
         // from: origem,
-        // key: "0x3a03ddf449677fd086bc6dcce286b3c275ebe811",
+        // Usuário 18
+        key: "0x595c1f08e81a78fe9a4c40faf9285ee60642d43a",
         pool: pool,
         amount: "1",
         to: destino,
