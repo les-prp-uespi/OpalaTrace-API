@@ -117,6 +117,8 @@ export class Usuario {
 
           // Verifica se a opala foi criada com sucesso
           if (opalaCriada) {
+            const usuario = Identidades.identidade;
+
             // Realiza a transferência da opala criada
             await this.transferirOpala(req, res, "opala_30", destino, "24", opalaCriada);
 
