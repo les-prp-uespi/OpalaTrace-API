@@ -72,7 +72,7 @@ export async function criarMintDeOpala(res: Response, nome: string, amount: stri
             });
       
             // Envie a resposta com a ID da transferência
-            return res.json({ type: 'token_transfer', id: transfer.localId });
+            return transfer;
           } catch (error) {
             // Log do erro para depuração
             console.error("Erro ao executar mintTokens:", error);
