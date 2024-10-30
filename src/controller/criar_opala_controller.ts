@@ -4,10 +4,10 @@ import { Usuario } from "../models/usuario";
 
 export class criarOpalaController {
     async adicionar(req: Request, res: Response) {
-        const { nome, id_funcao, destino, id_usuario, local, peso, tipo } = req.body;
+        const { nome, id_funcao, destino, id_usuario, local, peso, tipo, indice } = req.body;
 
         const usuario = new Usuario();
-        const opala = usuario.cadastrarOpala(req, res, id_usuario, destino, local, peso, tipo);
+        const opala = usuario.cadastrarOpala(req, res, id_usuario, destino, local, peso, tipo, indice);
 
         if (opala instanceof Error) {
             console.log(opala.message);
