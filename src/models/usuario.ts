@@ -183,7 +183,7 @@ export class Usuario {
   }
 
 
-  async transferirOpala(req: Request, res: Response, pool: string, destino: string, indice: string, minte: any) {
+  async transferirOpala(req: Request, res: Response, pool: string, destino: string, indice: string) {
     const pessoa1 = new FireFly({ host: 'http://localhost:5000', namespace: 'default' });
     console.log(`Dados: \nPool:${pool}, Destino: ${destino}, \nAmount: ${"1"}`)
 
