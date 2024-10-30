@@ -120,12 +120,37 @@ export class Usuario {
             const usuario = Identidades.identidade;
 
             // Realiza a transferência da opala criada
-            await this.transferirOpala(req, res, "opala_30", destino, "24", opalaCriada);
+            const transfer = await usuario.transferTokens({
+              pool: 'opala_30',
+              to: destino,
+              tokenIndex: indice,
+              amount: '1',
+              message: {
+                header: {
+                  tag: "cadastro_de_opala",
+                  topics: undefined,
+                },
+                data: [
+                  {
+                    datatype: {
+                      name: 'opalaData',
+                      version: '1.0'
+                    },
+                    value: {
+                      "local": local,
+                      "peso": `${peso}g`,
+                      "tipo": tipo
+                    }
+                  }
+                ],
+              }
+
+            });
 
             // Retorna sucesso ao cliente
             res.status(200).json({
               mensagem: "Opala criada e transferida com sucesso.",
-              opala: opalaCriada,
+              opala: transfer,
             });
 
           console.log("Opala criada com sucesso: ", opalaCriada);
