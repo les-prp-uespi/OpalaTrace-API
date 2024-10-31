@@ -21,7 +21,7 @@ export class criarOpalaController {
 
     async transferir(req: Request, res: Response) {
         const usuario = new Usuario();
-        const { pool, destino, indice } = req.body
+        const { pool, destino, indice, origem } = req.body
         try {
             const transfere = await usuario.transferirOpala(req, res, pool, destino, indice)
             if (transfere instanceof Error) {
