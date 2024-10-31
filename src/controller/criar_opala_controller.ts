@@ -23,15 +23,13 @@ export class criarOpalaController {
         const usuario = new Usuario();
         const { pool, destino, indice, origem } = req.body
         try {
-            const transfere = await usuario.transferirOpala(req, res, pool, destino, indice)
-            if (transfere instanceof Error) {
-                console.log(transfere.message);
-            }
-            else if (transfere) {
-    
-                console.log(transfere);
-            }
+            const transfere = await usuario.transferirOpala(req, res, pool, destino, indice, origem);
             
+            return res.status(200).json({
+                mensagem: "Opala transferida com sucesso.",
+                opala: transfere
+            });
+
         } catch (error) {
             console.error("Erro em criar_opala_controller: ", error);
         }
