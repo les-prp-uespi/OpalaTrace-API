@@ -31,9 +31,7 @@ export class criarOpalaController {
             });
 
         } catch (error) {
-            console.error("Erro em criar_opala_controller: ", error);
+            return res.status(500).json({ error: "Erro ao transferir Opala", details: error });
         }
-
-        console.log("Erro ao cadastrar o agente.");
     }
 }
