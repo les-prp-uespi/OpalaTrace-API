@@ -196,10 +196,9 @@ export class Usuario {
         tokenIndex: indice
       })
 
-      return { type: 'token_transfer', id: transferencia.localId }
+      console.log({ type: 'token_transfer', id: transferencia.localId });
     } catch (error) {
       console.error("Erro ao transferir Opala:", error);
-      return res.status(500).json({ error: "Erro ao transferir Opala", details: error });
     }
 
   }
