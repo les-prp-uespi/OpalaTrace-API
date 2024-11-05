@@ -16,7 +16,6 @@ export class criarOpalaController {
 
             console.log(opala);
         }
-        // return res.json("Erro ao cadastrar o agente.");
     }
 
     async transferir(req: Request, res: Response) {
