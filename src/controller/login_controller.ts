@@ -21,12 +21,8 @@ export class LoginController {
 
         const token = sign({ id: usuario.id }, "secret", { expiresIn: "1d" });
 
-        const { nome } = usuario;
+        const { nome, id, id_funcao } = usuario;
 
-        return res.json({ usuario: { nome, email }, token })
+        return res.json({ usuario: { nome, id, id_funcao, email }, token });
     }
-
-
-
-
 }
