@@ -8,8 +8,6 @@ import { criarOpalaController } from "./controller/criar_opala_controller";
 
 const router = Router();
 
-
-
 const criarUsuarioController = new CriarUsuarioController();
 const criarLoginController = new LoginController();
 const criarFuncaoController = new CriarFuncaoController();
