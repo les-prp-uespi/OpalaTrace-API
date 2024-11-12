@@ -21,5 +21,6 @@ router.get("/listar-funcoes", criarFuncaoController.retornarFuncoes);
 router.post("/cadastrar-opala", AutenticacaoMiddeware, criarOpala.adicionar);
 router.post("/transferir-opala", AutenticacaoMiddeware, criarOpala.transferir);
 router.put("/atualizar-usuario/:idAtual", AutenticacaoMiddeware, criarUsuarioController.editarInfoDoUsuario);
+router.get("/retornar-id-ethereum", criarLoginController.retornarIdEthereum);
 
 export default router;
