@@ -13,7 +13,7 @@ const criarLoginController = new LoginController();
 const criarFuncaoController = new CriarFuncaoController();
 const criarOpala = new criarOpalaController();
 
-router.post("/cadastrar-usuario", AutenticacaoMiddeware, criarUsuarioController.handle);
+router.post("/cadastrar-usuario", criarUsuarioController.handle);
 router.get("/usuarios", AutenticacaoMiddeware, criarUsuarioController.index);
 router.post("/auth", criarLoginController.authenticate);
 router.post("/funcoes", criarFuncaoController.handle);
