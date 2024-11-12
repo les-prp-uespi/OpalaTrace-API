@@ -30,4 +30,17 @@ export class LoginController {
 
         return res.json({ usuario: { nome, id, id_funcao, email, idEthereum }, token });
     }
+
+    async retornarIdEthereum(req: Request, res: Response) {
+
+        const { id } = req.body;
+        const agentes = await Identidades.identidade.getVerifiers("default");
+
+        // Filtro para retornar o ID Ethereum do agente logado
+        const agenteEspecifico = agentes.filter(item => item.identity === id);
+        const idEthereum = agenteEspecifico.at(0)?.value
+
+        return res.json({ idEthereum });
+
+    }
 }
